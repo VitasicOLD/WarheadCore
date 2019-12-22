@@ -11,7 +11,7 @@ Xinef
 #include <map>
 #include <list>
 
-struct StoredLootItem
+struct AC_GAME_API StoredLootItem
 {
     StoredLootItem(uint32 i, uint32 c, int32 ri, uint32 rs) : 
         itemid(i), count(c), randomPropertyId(ri), randomSuffix(rs) { }
@@ -26,7 +26,7 @@ struct StoredLootItem
 typedef std::list<StoredLootItem> StoredLootItemList;
 typedef std::unordered_map<uint32, StoredLootItemList> LootItemContainer;
 
-class LootItemStorage
+class AC_GAME_API LootItemStorage
 {
     private:
         LootItemStorage();

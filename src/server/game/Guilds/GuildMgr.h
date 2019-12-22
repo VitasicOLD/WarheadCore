@@ -9,7 +9,7 @@
 
 #include "Guild.h"
 
-class GuildMgr
+class AC_GAME_API GuildMgr
 {
 private:
     GuildMgr();

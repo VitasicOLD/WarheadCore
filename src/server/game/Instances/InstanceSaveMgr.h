@@ -25,7 +25,7 @@ class Group;
 class InstanceSaveManager;
 class InstanceSave;
 
-struct InstancePlayerBind
+struct AC_GAME_API InstancePlayerBind
 {
     InstanceSave* save;
     bool perm : 1;
@@ -35,14 +35,14 @@ struct InstancePlayerBind
 
 typedef std::unordered_map< uint32 /*mapId*/, InstancePlayerBind > BoundInstancesMap;
 
-struct BoundInstancesMapWrapper
+struct AC_GAME_API BoundInstancesMapWrapper
 {
     BoundInstancesMap m[MAX_DIFFICULTY];
 };
 
 typedef std::unordered_map< uint32 /*guidLow*/, BoundInstancesMapWrapper* > PlayerBindStorage;
 
-class InstanceSave
+class AC_GAME_API InstanceSave
 {
     friend class InstanceSaveManager;
     public:
@@ -96,7 +96,7 @@ class InstanceSave
 
 typedef std::unordered_map<uint32 /*PAIR32(map, difficulty)*/, time_t /*resetTime*/> ResetTimeByMapDifficultyMap;
 
-class InstanceSaveManager
+class AC_GAME_API InstanceSaveManager
 {
     friend class InstanceSave;
 

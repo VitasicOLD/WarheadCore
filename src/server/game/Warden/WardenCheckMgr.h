@@ -17,7 +17,7 @@ enum WardenActions
     WARDEN_ACTION_BAN
 };
 
-struct WardenCheck
+struct AC_GAME_API WardenCheck
 {
     uint8 Type;
     BigNumber Data;
@@ -29,12 +29,12 @@ struct WardenCheck
     enum WardenActions Action;
 };
 
-struct WardenCheckResult
+struct AC_GAME_API WardenCheckResult
 {
     BigNumber Result;                                       // MEM_CHECK
 };
 
-class WardenCheckMgr
+class AC_GAME_API WardenCheckMgr
 {
     WardenCheckMgr();
     ~WardenCheckMgr();

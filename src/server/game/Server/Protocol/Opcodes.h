@@ -1355,7 +1355,7 @@ enum PacketProcessing
 
 class WorldPacket;
 
-struct OpcodeHandler
+struct AC_GAME_API OpcodeHandler
 {
     char const* name;
     SessionStatus status;
@@ -1363,7 +1363,7 @@ struct OpcodeHandler
     void (WorldSession::*handler)(WorldPacket& recvPacket);
 };
 
-extern OpcodeHandler opcodeTable[NUM_MSG_TYPES];
+AC_GAME_API extern OpcodeHandler opcodeTable[NUM_MSG_TYPES];
 
 /// Lookup opcode name for human understandable logging
 inline const char* LookupOpcodeName(uint16 id)

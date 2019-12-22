@@ -103,6 +103,7 @@ enum NotifyFlags
 
 class WorldPacket;
 class UpdateData;
+
 class WorldSession;
 class Creature;
 class Player;
@@ -120,7 +121,7 @@ class MotionTransport;
 typedef std::unordered_map<Player*, UpdateData> UpdateDataMapType;
 typedef std::unordered_set<uint32> UpdatePlayerSet;
 
-class Object
+class AC_GAME_API Object
 {
     public:
         virtual ~Object();
@@ -445,7 +446,7 @@ struct MovementInfo
 
 #define MAPID_INVALID 0xFFFFFFFF
 
-class WorldLocation : public Position
+class AC_GAME_API WorldLocation : public Position
 {
     public:
         explicit WorldLocation(uint32 _mapid = MAPID_INVALID, float _x = 0, float _y = 0, float _z = 0, float _o = 0)
@@ -530,7 +531,7 @@ class MovableMapObject
         MapObjectCellMoveState _moveState;
 };
 
-class WorldObject : public Object, public WorldLocation
+class AC_GAME_API WorldObject : public Object, public WorldLocation
 {
     protected:
         explicit WorldObject(bool isWorldObject); //note: here it means if it is in grid object list or world object list

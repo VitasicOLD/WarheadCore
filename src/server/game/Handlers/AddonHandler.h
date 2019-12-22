@@ -11,7 +11,7 @@
 #include "Config.h"
 #include "WorldPacket.h"
 
-class AddonHandler
+class AC_GAME_API AddonHandler
 {
 public:
     AddonHandler();
