@@ -43,7 +43,7 @@ namespace VMAP
     typedef std::map<uint32, ModelSpawn> UniqueEntryMap;
     typedef std::multimap<uint32, uint32> TileMap;
 
-    struct MapSpawns
+    struct AC_COMMON_API MapSpawns
     {
         UniqueEntryMap UniqueEntries;
         TileMap TileEntries;
@@ -70,7 +70,7 @@ namespace VMAP
         bool Read(FILE* f);
     };
 
-    struct WorldModel_Raw
+    struct AC_COMMON_API WorldModel_Raw
     {
         uint32 RootWMOID;
         std::vector<GroupModel_Raw> groupsArray;

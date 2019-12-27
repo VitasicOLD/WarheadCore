@@ -2523,15 +2523,15 @@ void Map::RemoveFromActive(GameObject* obj)
     RemoveFromActiveHelper(obj);
 }
 
-template bool Map::AddToMap(Corpse*, bool);
-template bool Map::AddToMap(Creature*, bool);
-template bool Map::AddToMap(GameObject*, bool);
-template bool Map::AddToMap(DynamicObject*, bool);
+template AC_GAME_API bool Map::AddToMap(Corpse*, bool);
+template AC_GAME_API bool Map::AddToMap(Creature*, bool);
+template AC_GAME_API bool Map::AddToMap(GameObject*, bool);
+template AC_GAME_API bool Map::AddToMap(DynamicObject*, bool);
 
-template void Map::RemoveFromMap(Corpse*, bool);
-template void Map::RemoveFromMap(Creature*, bool);
-template void Map::RemoveFromMap(GameObject*, bool);
-template void Map::RemoveFromMap(DynamicObject*, bool);
+template AC_GAME_API void Map::RemoveFromMap(Corpse*, bool);
+template AC_GAME_API void Map::RemoveFromMap(Creature*, bool);
+template AC_GAME_API void Map::RemoveFromMap(GameObject*, bool);
+template AC_GAME_API void Map::RemoveFromMap(DynamicObject*, bool);
 
 /* ******* Dungeon Instance Maps ******* */
 

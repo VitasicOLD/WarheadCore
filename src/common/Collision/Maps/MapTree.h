@@ -71,7 +71,7 @@ namespace VMAP
             void getModelInstances(ModelInstance* &models, uint32 &count);
     };
 
-    struct AreaInfo
+    struct AC_COMMON_API AreaInfo
     {
         AreaInfo(): result(false), ground_Z(-G3D::inf()), flags(0), adtId(0),
             rootId(0), groupId(0) { }

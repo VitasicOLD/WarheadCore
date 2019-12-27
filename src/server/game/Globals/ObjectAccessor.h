@@ -74,7 +74,7 @@ template <class T> std::unordered_map< uint64, T* > HashMapHolder<T>::m_objectMa
 template <class T> typename HashMapHolder<T>::LockType HashMapHolder<T>::i_lock;
 
 // pussywizard:
-class DelayedCorpseAction
+class AC_GAME_API DelayedCorpseAction
 {
 public:
     DelayedCorpseAction(Corpse* corpse, uint8 action, uint32 mapId, uint32 instanceId) : _corpse(corpse), _action(action), _mapId(mapId), _instanceId(instanceId) {}
@@ -84,7 +84,7 @@ public:
     uint32 _instanceId;
 };
 
-class ObjectAccessor
+class AC_GAME_API ObjectAccessor
 {
     private:
         ObjectAccessor();

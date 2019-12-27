@@ -44,14 +44,14 @@ struct PlayerLevelInfo;
 #pragma pack(push, 1)
 #endif
 
-struct PageText
+struct AC_GAME_API PageText
 {
     std::string Text;
     uint16 NextPage;
 };
 
 /// Key for storing temp summon data in TempSummonDataContainer
-struct TempSummonGroupKey
+struct AC_GAME_API TempSummonGroupKey
 {
     TempSummonGroupKey(uint32 summonerEntry, SummonerType summonerType, uint8 group)
         : _summonerEntry(summonerEntry), _summonerType(summonerType), _summonGroup(group)
@@ -119,7 +119,7 @@ typedef std::map<uint32, PageText> PageTextContainer;
 // Benchmarked: Faster than std::map (insert/find)
 typedef std::unordered_map<uint16, InstanceTemplate> InstanceTemplateContainer;
 
-struct GameTele
+struct AC_GAME_API GameTele
 {
     float  position_x;
     float  position_y;
@@ -176,7 +176,7 @@ enum eScriptFlags
     SF_ORIENTATION_FACE_TARGET  = 0x1,
 };
 
-struct ScriptInfo
+struct AC_GAME_API ScriptInfo
 {
     ScriptsType type;
     uint32 id;
@@ -383,7 +383,7 @@ std::string GetScriptsTableNameByType(ScriptsType type);
 ScriptMapMap* GetScriptsMapByType(ScriptsType type);
 std::string GetScriptCommandName(ScriptCommands command);
 
-struct SpellClickInfo
+struct AC_GAME_API SpellClickInfo
 {
     uint32 spellId;
     uint8 castFlags;
@@ -396,7 +396,7 @@ struct SpellClickInfo
 typedef std::multimap<uint32, SpellClickInfo> SpellClickInfoContainer;
 typedef std::pair<SpellClickInfoContainer::const_iterator, SpellClickInfoContainer::const_iterator> SpellClickInfoMapBounds;
 
-struct AreaTriggerTeleport
+struct AC_GAME_API AreaTriggerTeleport
 {
     uint32 target_mapId;
     float  target_X;
@@ -405,7 +405,7 @@ struct AreaTriggerTeleport
     float  target_Orientation;
 };
 
-struct AreaTrigger
+struct AC_GAME_API AreaTrigger
 {
     uint32 entry;
     uint32 map;
@@ -419,7 +419,7 @@ struct AreaTrigger
     float orientation;
 };
 
-struct BroadcastText
+struct AC_GAME_API BroadcastText
 {
     BroadcastText() : Id(0), Language(0), EmoteId0(0), EmoteId1(0), EmoteId2(0),
                       EmoteDelay0(0), EmoteDelay1(0), EmoteDelay2(0), SoundId(0), Unk1(0), Unk2(0)
@@ -465,7 +465,7 @@ typedef std::unordered_map<uint32, BroadcastText> BroadcastTextContainer;
 typedef std::set<uint32> CellGuidSet;
 typedef std::unordered_map<uint32/*player guid*/, uint32/*instance*/> CellCorpseSet;
 
-struct CellObjectGuids
+struct AC_GAME_API CellObjectGuids
 {
     CellGuidSet creatures;
     CellGuidSet gameobjects;
@@ -484,7 +484,7 @@ typedef std::unordered_map<uint32/*(mapid, spawnMode) pair*/, CellObjectGuidsMap
 // Acore Trainer Reference start range
 #define ACORE_TRAINER_START_REF      200000
 
-struct AcoreString
+struct AC_GAME_API AcoreString
 {
     StringVector Content;
 };
@@ -509,7 +509,7 @@ typedef std::unordered_map<uint32, PointOfInterestLocale> PointOfInterestLocaleC
 typedef std::multimap<uint32, uint32> QuestRelations;
 typedef std::pair<QuestRelations::const_iterator, QuestRelations::const_iterator> QuestRelationBounds;
 
-struct PetLevelInfo
+struct AC_GAME_API PetLevelInfo
 {
     PetLevelInfo() : health(0), mana(0), armor(0), min_dmg(0), max_dmg(0) { for (uint8 i=0; i < MAX_STATS; ++i) stats[i] = 0; }
 
@@ -521,7 +521,7 @@ struct PetLevelInfo
     uint16 max_dmg;
 };
 
-struct MailLevelReward
+struct AC_GAME_API MailLevelReward
 {
     MailLevelReward() : raceMask(0), mailTemplateId(0), senderEntry(0) {}
     MailLevelReward(uint32 _raceMask, uint32 _mailTemplateId, uint32 _senderEntry) : raceMask(_raceMask), mailTemplateId(_mailTemplateId), senderEntry(_senderEntry) {}
@@ -535,7 +535,7 @@ typedef std::list<MailLevelReward> MailLevelRewardList;
 typedef std::unordered_map<uint8, MailLevelRewardList> MailLevelRewardContainer;
 
 // We assume the rate is in general the same for all three types below, but chose to keep three for scalability and customization
-struct RepRewardRate
+struct AC_GAME_API RepRewardRate
 {
     float questRate;            // We allow rate = 0.0 in database. For this case, it means that
     float questDailyRate;
@@ -546,7 +546,7 @@ struct RepRewardRate
     float spellRate;
 };
 
-struct ReputationOnKillEntry
+struct AC_GAME_API ReputationOnKillEntry
 {
     uint32 RepFaction1;
     uint32 RepFaction2;
@@ -559,14 +559,14 @@ struct ReputationOnKillEntry
     bool TeamDependent;
 };
 
-struct RepSpilloverTemplate
+struct AC_GAME_API RepSpilloverTemplate
 {
     uint32 faction[MAX_SPILLOVER_FACTIONS];
     float faction_rate[MAX_SPILLOVER_FACTIONS];
     uint32 faction_rank[MAX_SPILLOVER_FACTIONS];
 };
 
-struct PointOfInterest
+struct AC_GAME_API PointOfInterest
 {
     uint32 ID;
     float PositionX;
@@ -577,7 +577,7 @@ struct PointOfInterest
     std::string Name;
 };
 
-struct GossipMenuItems
+struct AC_GAME_API GossipMenuItems
 {
     uint32          MenuID;
     uint32          OptionID;
@@ -595,7 +595,7 @@ struct GossipMenuItems
     uint32          BoxBroadcastTextID;
 };
 
-struct GossipMenus
+struct AC_GAME_API GossipMenus
 {
     uint32          MenuID;
     uint32          TextID;
@@ -609,7 +609,7 @@ typedef std::multimap<uint32, GossipMenuItems> GossipMenuItemsContainer;
 typedef std::pair<GossipMenuItemsContainer::const_iterator, GossipMenuItemsContainer::const_iterator> GossipMenuItemsMapBounds;
 typedef std::pair<GossipMenuItemsContainer::iterator, GossipMenuItemsContainer::iterator> GossipMenuItemsMapBoundsNonConst;
 
-struct QuestPOIPoint
+struct AC_GAME_API QuestPOIPoint
 {
     int32 x;
     int32 y;
@@ -618,7 +618,7 @@ struct QuestPOIPoint
     QuestPOIPoint(int32 _x, int32 _y) : x(_x), y(_y) {}
 };
 
-struct QuestPOI
+struct AC_GAME_API QuestPOI
 {
     uint32 Id;
     int32 ObjectiveIndex;
@@ -656,19 +656,19 @@ SkillRangeType GetSkillRangeType(SkillLineEntry const* pSkill, bool racial);
 #define MAX_CHARTER_NAME         24                         // max allowed by client name length
 #define MAX_CHANNEL_NAME         50                         // pussywizard
 
-bool normalizePlayerName(std::string& name);
+AC_GAME_API bool normalizePlayerName(std::string& name);
 
-struct LanguageDesc
+struct AC_GAME_API LanguageDesc
 {
     Language lang_id;
     uint32   spell_id;
     uint32   skill_id;
 };
 
-extern LanguageDesc lang_description[LANGUAGES_COUNT];
-LanguageDesc const* GetLanguageDescByID(uint32 lang);
+AC_GAME_API extern LanguageDesc lang_description[LANGUAGES_COUNT];
+AC_GAME_API LanguageDesc const* GetLanguageDescByID(uint32 lang);
 
-struct DungeonEncounter
+struct AC_GAME_API DungeonEncounter
 {
     DungeonEncounter(DungeonEncounterEntry const* _dbcEntry, EncounterCreditType _creditType, uint32 _creditEntry, uint32 _lastEncounterDungeon)
         : dbcEntry(_dbcEntry), creditType(_creditType), creditEntry(_creditEntry), lastEncounterDungeon(_lastEncounterDungeon) { }
@@ -684,7 +684,7 @@ typedef std::unordered_map<uint32, DungeonEncounterList> DungeonEncounterContain
 
 class PlayerDumpReader;
 
-class ObjectMgr
+class AC_GAME_API ObjectMgr
 {
     friend class PlayerDumpReader;
 

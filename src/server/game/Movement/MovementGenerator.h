@@ -15,7 +15,7 @@
 
 class Unit;
 
-class MovementGenerator
+class AC_GAME_API MovementGenerator
 {
     public:
         virtual ~MovementGenerator();

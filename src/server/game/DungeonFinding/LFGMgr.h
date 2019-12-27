@@ -127,7 +127,7 @@ enum LfgUpdateFlag // pussywizard: for raid browser
     LFG_UPDATE_FLAG_BINDED        = 0x80
 };
 
-struct RBEntryInfo
+struct AC_GAME_API RBEntryInfo
 {
     RBEntryInfo() {}
     RBEntryInfo(uint8 _roles, std::string const& _comment) : roles(_roles), comment(_comment) {}
@@ -135,7 +135,7 @@ struct RBEntryInfo
     std::string comment;
 };
 
-struct RBInternalInfo
+struct AC_GAME_API RBInternalInfo
 {
     uint64 guid;
     std::string comment;
@@ -234,7 +234,7 @@ typedef std::map<uint64, LfgPlayerData> LfgPlayerDataContainer;
 typedef std::unordered_map<uint32, LFGDungeonData> LFGDungeonContainer;
 
 // Data needed by SMSG_LFG_JOIN_RESULT
-struct LfgJoinResultData
+struct AC_GAME_API LfgJoinResultData
 {
     LfgJoinResultData(LfgJoinResult _result = LFG_JOIN_OK, LfgRoleCheckState _state = LFG_ROLECHECK_DEFAULT):
         result(_result), state(_state) {}
@@ -244,7 +244,7 @@ struct LfgJoinResultData
 };
 
 // Data needed by SMSG_LFG_UPDATE_PARTY and SMSG_LFG_UPDATE_PLAYER
-struct LfgUpdateData
+struct AC_GAME_API LfgUpdateData
 {
     LfgUpdateData(LfgUpdateType _type = LFG_UPDATETYPE_DEFAULT): updateType(_type), state(LFG_STATE_NONE), comment("") { }
     LfgUpdateData(LfgUpdateType _type, LfgDungeonSet const& _dungeons, std::string const& _comment):
@@ -259,7 +259,7 @@ struct LfgUpdateData
 };
 
 // Data needed by SMSG_LFG_QUEUE_STATUS
-struct LfgQueueStatusData
+struct AC_GAME_API LfgQueueStatusData
 {
     LfgQueueStatusData(uint32 _dungeonId = 0, int32 _waitTime = -1, int32 _waitTimeAvg = -1, int32 _waitTimeTank = -1, int32 _waitTimeHealer = -1,
         int32 _waitTimeDps = -1, uint32 _queuedTime = 0, uint8 _tanks = 0, uint8 _healers = 0, uint8 _dps = 0) :
@@ -278,7 +278,7 @@ struct LfgQueueStatusData
     uint8 dps;
 };
 
-struct LfgPlayerRewardData
+struct AC_GAME_API LfgPlayerRewardData
 {
     LfgPlayerRewardData(uint32 random, uint32 current, bool _done, Quest const* _quest):
         rdungeonEntry(random), sdungeonEntry(current), done(_done), quest(_quest) { }
@@ -289,7 +289,7 @@ struct LfgPlayerRewardData
 };
 
 /// Reward info
-struct LfgReward
+struct AC_GAME_API LfgReward
 {
     LfgReward(uint32 _maxLevel = 0, uint32 _firstQuest = 0, uint32 _otherQuest = 0):
         maxLevel(_maxLevel), firstQuest(_firstQuest), otherQuest(_otherQuest) { }
@@ -300,7 +300,7 @@ struct LfgReward
 };
 
 /// Stores player data related to proposal to join
-struct LfgProposalPlayer
+struct AC_GAME_API LfgProposalPlayer
 {
     LfgProposalPlayer(): role(0), accept(LFG_ANSWER_PENDING), group(0) { }
     uint8 role;                                            ///< Proposed role
@@ -309,7 +309,7 @@ struct LfgProposalPlayer
 };
 
 /// Stores group data related to proposal to join
-struct LfgProposal
+struct AC_GAME_API LfgProposal
 {
     LfgProposal(uint32 dungeon = 0): id(0), dungeonId(dungeon), state(LFG_PROPOSAL_INITIATING),
         group(0), leader(0), cancelTime(0), encounters(0), isNew(true)
@@ -329,7 +329,7 @@ struct LfgProposal
 };
 
 /// Stores all rolecheck info of a group that wants to join
-struct LfgRoleCheck
+struct AC_GAME_API LfgRoleCheck
 {
     time_t cancelTime;                                     ///< Time when the rolecheck will fail
     LfgRolesMap roles;                                     ///< Player selected roles
@@ -340,7 +340,7 @@ struct LfgRoleCheck
 };
 
 /// Stores information of a current vote to kick someone from a group
-struct LfgPlayerBoot
+struct AC_GAME_API LfgPlayerBoot
 {
     time_t cancelTime;                                     ///< Time left to vote
     bool inProgress;                                       ///< Vote in progress
@@ -349,7 +349,7 @@ struct LfgPlayerBoot
     std::string reason;                                    ///< kick reason
 };
 
-struct LFGDungeonData
+struct AC_GAME_API LFGDungeonData
 {
     LFGDungeonData(): id(0), name(""), map(0), type(0), expansion(0), group(0), minlevel(0),
         maxlevel(0), difficulty(REGULAR_DIFFICULTY), seasonal(false), x(0.0f), y(0.0f), z(0.0f), o(0.0f)
@@ -376,7 +376,7 @@ struct LFGDungeonData
     uint32 Entry() const { return id + (type << 24); }
 };
 
-class LFGMgr
+class AC_GAME_API LFGMgr
 {
     private:
         LFGMgr();

@@ -19,7 +19,7 @@ class StaticTransport;
 class MotionTransport;
 struct TransportCreatureProto;
 
-class MapManager
+class AC_GAME_API MapManager
 {
     public:
         static MapManager* instance();

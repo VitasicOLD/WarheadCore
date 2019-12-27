@@ -26,7 +26,7 @@ typedef std::set<MotionTransport*>               TransportSet;
 typedef std::unordered_map<uint32, TransportSet>      TransportMap;
 typedef std::unordered_map<uint32, std::set<uint32> > TransportInstanceMap;
 
-struct KeyFrame
+struct AC_GAME_API KeyFrame
 {
     explicit KeyFrame(TaxiPathNodeEntry const* node) : Index(0), Node(node), InitialOrientation(0.0f),
         DistSinceStop(-1.0f), DistUntilStop(-1.0f), DistFromPrev(-1.0f), TimeFrom(0.0f), TimeTo(0.0f),
@@ -55,7 +55,7 @@ struct KeyFrame
     bool IsStopFrame() const { return Node->actionFlag == 2; }
 };
 
-struct TransportTemplate
+struct AC_GAME_API TransportTemplate
 {
     TransportTemplate() : inInstance(false), pathTime(0), accelTime(0.0f), accelDist(0.0f), entry(0) { }
     ~TransportTemplate();
@@ -72,7 +72,7 @@ struct TransportTemplate
 typedef std::map<uint32, TransportAnimationEntry const*> TransportPathContainer;
 typedef std::map<uint32, TransportRotationEntry const*> TransportPathRotationContainer;
 
-struct TransportAnimation
+struct AC_GAME_API TransportAnimation
 {
     TransportAnimation() : TotalTime(0) { }
 
@@ -86,10 +86,8 @@ struct TransportAnimation
 
 typedef std::map<uint32, TransportAnimation> TransportAnimationContainer;
 
-class TransportMgr
+class AC_GAME_API TransportMgr
 {
-    friend void LoadDBCStores(std::string const&);
-    
 public:
     static TransportMgr* instance();
 

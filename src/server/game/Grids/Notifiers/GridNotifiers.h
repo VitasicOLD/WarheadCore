@@ -26,7 +26,7 @@ class Player;
 
 namespace acore
 {
-    struct VisibleNotifier
+    struct AC_GAME_API VisibleNotifier
     {
         Player &i_player;
         Player::ClientGUIDs vis_guids;
@@ -56,7 +56,7 @@ namespace acore
         void Visit(DynamicObjectMapType &);
     };
 
-    struct PlayerRelocationNotifier : public VisibleNotifier
+    struct AC_GAME_API PlayerRelocationNotifier : public VisibleNotifier
     {
         PlayerRelocationNotifier(Player &player, bool largeOnly) : VisibleNotifier(player, false, largeOnly) {}
 
@@ -64,7 +64,7 @@ namespace acore
         void Visit(PlayerMapType &);
     };
 
-    struct CreatureRelocationNotifier
+    struct AC_GAME_API CreatureRelocationNotifier
     {
         Creature &i_creature;
         CreatureRelocationNotifier(Creature &c) : i_creature(c) {}
@@ -72,7 +72,7 @@ namespace acore
         void Visit(PlayerMapType &);
     };
 
-    struct AIRelocationNotifier
+    struct AC_GAME_API AIRelocationNotifier
     {
         Unit &i_unit;
         bool isCreature;
@@ -81,7 +81,7 @@ namespace acore
         void Visit(CreatureMapType &);
     };
 
-    struct MessageDistDeliverer
+    struct AC_GAME_API MessageDistDeliverer
     {
         WorldObject* i_source;
         WorldPacket* i_message;
@@ -113,7 +113,7 @@ namespace acore
         }
     };
 
-    struct MessageDistDelivererToHostile
+    struct AC_GAME_API MessageDistDelivererToHostile
     {
         Unit* i_source;
         WorldPacket* i_message;
@@ -564,7 +564,7 @@ namespace acore
 
     // WorldObject check classes
 
-    class AnyDeadUnitObjectInRangeCheck
+    class AC_GAME_API AnyDeadUnitObjectInRangeCheck
     {
         public:
             AnyDeadUnitObjectInRangeCheck(Unit* searchObj, float range) : i_searchObj(searchObj), i_range(range) {}
@@ -577,7 +577,7 @@ namespace acore
             float i_range;
     };
 
-    class AnyDeadUnitSpellTargetInRangeCheck : public AnyDeadUnitObjectInRangeCheck
+    class AC_GAME_API AnyDeadUnitSpellTargetInRangeCheck : public AnyDeadUnitObjectInRangeCheck
     {
         public:
             AnyDeadUnitSpellTargetInRangeCheck(Unit* searchObj, float range, SpellInfo const* spellInfo, SpellTargetCheckTypes check)
@@ -1214,7 +1214,7 @@ namespace acore
             NearestCreatureEntryWithLiveStateInObjectRangeCheck(NearestCreatureEntryWithLiveStateInObjectRangeCheck const&);
     };
 
-    class AnyPlayerInObjectRangeCheck
+    class AC_GAME_API AnyPlayerInObjectRangeCheck
     {
         public:
             AnyPlayerInObjectRangeCheck(WorldObject const* obj, float range, bool reqAlive = true, bool disallowGM = false) : _obj(obj), _range(range), _reqAlive(reqAlive), _disallowGM(disallowGM) {}
@@ -1321,7 +1321,7 @@ namespace acore
         float m_fRange;
     };
 
-    class AllCreaturesOfEntryInRange
+    class AC_GAME_API AllCreaturesOfEntryInRange
     {
         public:
             AllCreaturesOfEntryInRange(const WorldObject* object, uint32 entry, float maxRange) : m_pObject(object), m_uiEntry(entry), m_fRange(maxRange) {}
