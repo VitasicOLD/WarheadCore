@@ -4,7 +4,7 @@
 /**
  *  @file     MMAP_Memory_Pool.h
  *
- *  @author Dougls C. Schmidt <schmidt@cs.wustl.edu>
+ *  @author Dougls C. Schmidt <d.schmidt@vanderbilt.edu>
  *  @author Prashant Jain <pjain@cs.wustl.edu>
  */
 //=============================================================================
@@ -135,8 +135,6 @@ class ACE_Export ACE_MMAP_Memory_Pool : public ACE_Event_Handler
 {
 public:
   typedef ACE_MMAP_Memory_Pool_Options OPTIONS;
-
-  // = Initialization and termination methods.
 
   /// Initialize the pool.
   ACE_MMAP_Memory_Pool (const ACE_TCHAR *backing_store_name = 0,
@@ -333,6 +331,10 @@ public:
 
   /// Overwrite the default sync behavior with no-op
   virtual int sync (void *addr, size_t len, int flags = MS_SYNC);
+
+  /// Declare the dynamic allocation hooks.
+  ACE_ALLOC_HOOK_DECLARE;
+
 };
 
 ACE_END_VERSIONED_NAMESPACE_DECL

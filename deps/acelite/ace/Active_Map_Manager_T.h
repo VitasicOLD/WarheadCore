@@ -4,8 +4,6 @@
 /**
  *  @file    Active_Map_Manager_T.h
  *
- *  $Id: Active_Map_Manager_T.h 84316 2009-02-03 19:46:05Z johnnyw $
- *
  *  @author Irfan Pyarali
  */
 //=============================================================================
@@ -52,7 +50,6 @@ public:
   typedef ITERATOR iterator;
   typedef REVERSE_ITERATOR reverse_iterator;
 
-  // = Initialization and termination methods.
   /// Initialize a Active_Map_Manager with the ACE_DEFAULT_MAP_SIZE.
   ACE_Active_Map_Manager (ACE_Allocator *alloc = 0);
 

@@ -166,6 +166,8 @@ public:
   ///            0 if there were only wake-ups (no handlers to dispatch).
   int dequeue_one (ACE_Notification_Buffer &nb);
 
+  ACE_ALLOC_HOOK_DECLARE;
+
 protected:
 
   /**
@@ -290,6 +292,8 @@ class ACE_Export ACE_Dev_Poll_Reactor : public ACE_Reactor_Impl
 
     /// Flag to say whether or not this handle is registered with epoll.
     bool controlled;
+
+    ACE_ALLOC_HOOK_DECLARE;
   };
 
 
@@ -752,7 +756,7 @@ public:
    * Set the maximum number of times that ACE_Reactor_Impl will
    * iterate and dispatch the ACE_Event_Handlers that are passed in
    * via the notify queue before breaking out of its
-   * <ACE_Message_Queue::dequeue> loop.  By default, this is set to
+   * ACE_Message_Queue::dequeue() loop.  By default, this is set to
    * -1, which means "iterate until the queue is empty."  Setting this
    * to a value like "1 or 2" will increase "fairness" (and thus
    * prevent starvation) at the expense of slightly higher dispatching
@@ -764,7 +768,7 @@ public:
    * Get the maximum number of times that the ACE_Reactor_Impl will
    * iterate and dispatch the ACE_Event_Handlers that are passed in
    * via the notify queue before breaking out of its
-   * <ACE_Message_Queue::dequeue> loop.
+   * ACE_Message_Queue::dequeue() loop.
    */
   virtual int max_notify_iterations (void);
 
@@ -999,7 +1003,6 @@ protected:
   short reactor_mask_to_poll_event (ACE_Reactor_Mask mask);
 
 protected:
-
   /// Has the reactor been initialized.
   bool initialized_;
 
@@ -1115,7 +1118,7 @@ protected:
 
     /// Returns whether the thread that created this object owns the
     /// token or not.
-    int is_owner (void);
+    bool is_owner (void);
 
     /// A helper method that acquires the token 1) at a low priority, and
     /// 2) wait quietly for the token, not waking another thread. This
@@ -1133,16 +1136,14 @@ protected:
     Token_Guard (void);
 
   private:
-
     /// The Reactor token.
     ACE_Dev_Poll_Reactor_Token &token_;
 
     /// Flag that indicate whether the thread that created this object
-    /// owns the token or not. A value of 0 indicates that this class
-    /// hasn't got the token (and hence the thread) and a value of 1
+    /// owns the token or not. A value of false indicates that this class
+    /// hasn't got the token (and hence the thread) and a value of true
     /// vice-versa.
-    int owner_;
-
+    bool owner_;
   };
 };
 

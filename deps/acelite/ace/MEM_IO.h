@@ -116,6 +116,8 @@ public:
                     const ACE_TCHAR *name,
                     MALLOC_OPTIONS *options);
 
+  int fini ();
+
   /**
    * Fetch location of next available data into <recv_buffer_>.
    * As this operation read the address of the data off the socket
@@ -168,7 +170,6 @@ private:
 class ACE_Export ACE_MEM_IO : public ACE_SOCK
 {
 public:
-  // = Initialization and termination methods.
   /// Constructor.
   ACE_MEM_IO (void);
 

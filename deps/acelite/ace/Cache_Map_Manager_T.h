@@ -91,8 +91,6 @@ public:
    */
   typedef std::pair<VALUE, ATTRIBUTES> CACHE_VALUE;
 
-  // = Initialization and termination methods.
-
   /// Initialize a <Cache_Map_Manager> with <caching_strategy> and
   /// @a size entries.
   ACE_Cache_Map_Manager (CACHING_STRATEGY &caching_strategy,
@@ -216,6 +214,9 @@ public:
 
   /// The caching strategy used on the cache.
   CACHING_STRATEGY &caching_strategy (void);
+
+  /// Declare the dynamic allocation hooks.
+  ACE_ALLOC_HOOK_DECLARE;
 
 protected:
 
